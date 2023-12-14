@@ -1,0 +1,50 @@
+.hero{
+    height: 80vh;
+    background: linear-gradient(180deg, rgba(238, 241, 237, 0.5) 0%, rgba(111, 243, 75, 0.5) 35%, rgba(0, 219, 11, 0.5) 100%), url("https://images.unsplash.com/photo-1611095772763-5b6b7b0b9b0f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YmVhdXR5JTIwY2FyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80");
+    display: flex;
+}   
+
+.hero_left{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding-left: 180px;
+    line-height: 1.1;
+}
+.hero_left h3{
+    font-size: 2rem;
+    font-weight: 300;
+    color: rgb(1, 1, 1);
+    text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+    margin: 0;
+}
+.hero_left h2{
+    font-size: 3rem;
+    font-weight: 600;
+    color: rgb(1, 1, 1);
+    text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+    margin: 0;
+}
+
+.hero_left .shop_now_btn{
+    padding: 10px 20px;
+    border-radius: 30px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    background-color: rgb(255, 0, 0);
+    color: rgb(0, 0, 0);
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.hero_right{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 10px;
+}
