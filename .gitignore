@@ -5,6 +5,9 @@
 /.pnp
 .pnp.js
 
+#images (remove later)
+/src/Components/Assets
+
 # testing
 /coverage
 
