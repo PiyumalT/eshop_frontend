@@ -19,9 +19,9 @@ export const Navbar = () => {
       </div>
       <ul className='navbar__links'>
         <li onClick={()=>{setShowLinks("category1")}}><Link to='/'>category 1</Link>{showLinks==="category1"?<hr/>:<></>}</li>
-        <li onClick={()=>{setShowLinks("category2")}}><Link to='/'>category 2</Link>{showLinks==="category2"?<hr/>:<></>}</li>
-        <li onClick={()=>{setShowLinks("category3")}}><Link to='/'>category 3</Link>{showLinks==="category3"?<hr/>:<></>}</li>
-        <li onClick={()=>{setShowLinks("category4")}}><Link to='/'>category 4</Link>{showLinks==="category4"?<hr/>:<></>}</li>
+        <li onClick={()=>{setShowLinks("category2")}}><Link to='/mens'>category 2</Link>{showLinks==="category2"?<hr/>:<></>}</li>
+        <li onClick={()=>{setShowLinks("category3")}}><Link to='/womans'>category 3</Link>{showLinks==="category3"?<hr/>:<></>}</li>
+        <li onClick={()=>{setShowLinks("category4")}}><Link to='/kids'>category 4</Link>{showLinks==="category4"?<hr/>:<></>}</li>
       </ul>
       <div className='navbar__search'>
         <input type='text' placeholder='Search' />

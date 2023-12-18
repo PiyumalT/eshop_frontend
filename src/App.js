@@ -6,6 +6,7 @@ import Home from './Pages/Home';
 import Cart from './Pages/Cart';
 import Product from './Pages/Product';
 import Sign from './Pages/Sign';
+import ShopCategory from './Pages/ShopCategory';
 
 function App() {
   return (
@@ -18,7 +19,12 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/product" element={<Product />} />
-            <Route path="/sign" element={<Sign />} />                 
+            <Route path="/sign" element={<Sign />} />   
+            <Route path="/mens" element={<ShopCategory category="men"/>} />
+            <Route path='/womans' element={<ShopCategory category="women"/>} />
+            <Route path='/kids' element={<ShopCategory category="kid"/>} />
+
+ 
           </Routes>
           <Footer />
         </BrowserRouter>
