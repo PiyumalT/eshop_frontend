@@ -1,0 +1,25 @@
+.popular, .NewArrival{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+.popular h2, .NewArrival h2{
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #111010;
+    margin-top: 20px;
+    margin-bottom: 3px;
+}
+.popular hr, .NewArrival hr{
+    width: 200px;
+    height: 6px;
+    border-radius: 10px;
+    background-color: #111010;
+    margin:0px;
+}
+.popular_items, .NewArrival_items{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 10px;
+}

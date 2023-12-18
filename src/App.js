@@ -1,5 +1,6 @@
 import './App.css';
 import Navbar from './Components/Navbar/Navbar';
+import { Footer } from './Components/Footer/Footer';
 import { BrowserRouter , Routes , Route } from 'react-router-dom';
 import Home from './Pages/Home';
 import Cart from './Pages/Cart';
@@ -19,12 +20,10 @@ function App() {
             <Route path="/product" element={<Product />} />
             <Route path="/sign" element={<Sign />} />                 
           </Routes>
+          <Footer />
         </BrowserRouter>
         
       </div>
-
-      <h1>My React App</h1>
-      <p>My first React app</p>
     </div>
   );
 }

@@ -1,0 +1,58 @@
+.newsletter{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 20px 0px;
+    margin-bottom: 10px;
+    background: linear-gradient(180deg, rgba(238, 241, 237, 0.5) 0%, rgba(111, 243, 75, 0.5) 35%, rgba(0, 219, 11, 0.5) 100%), url("https://images.unsplash.com/photo-1611095772763-5b6b7b0b9b0f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YmVhdXR5JTIwY2FyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80");
+    gap: 30px;
+}
+
+.newsletter h1{
+    font-size: 2rem;
+    font-weight: 600;
+    color: #111010;
+    margin: 0;
+}
+
+.newsletter p{
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #111010;
+    margin: 0;
+}
+
+.newsletter .input{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    width: 730px;
+    border-radius: 80px;
+    border: 1px solid #111010;
+}
+
+.newsletter .input input{
+    width: 500px;
+    margin-left: 30px;
+    border: none;
+    outline: none;
+    color: rgb(14, 14, 14);
+    font-size: 1.0rem;
+}
+
+.newsletter .input button{
+    width: 210px;
+    padding: 10px 20px;
+    border-radius: 80px;
+    background-color: #111010;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}

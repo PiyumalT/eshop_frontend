@@ -48,3 +48,8 @@
     align-items: center;
     padding-right: 10px;
 }
+.hero_right img{
+    width: auto;
+    height: 95%;
+    border-radius: 10px;
+}
