@@ -5,6 +5,10 @@
     border-radius: 10px;
     margin: 5px;
 }
+.item a{
+    text-decoration: none;
+    color: inherit;
+}
 .item img{
     width: 90%;
     height: auto;

@@ -1,0 +1,49 @@
+.sign{
+    width: 100%;
+    background: wheat;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.sign .sign-container{
+    width: 580px;
+    background: white;
+    margin:auto;
+    padding:40px;
+    align-items: center;
+}
+.sign-container h1{
+    margin: 20px 0px;;
+}
+.sign-fields{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap : 20px;
+    margin-top: 30px;
+}
+.sign-fields input{
+    width: 90%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    outline: none;
+}
+.sign .sign-btn{
+    width: 50%;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    outline: none;
+    background: #1E90FF;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+.sign-agreement{
+    display: flex;
+    width: 50%;
+    align-items: center;
+    gap: 10px;
+    margin: auto;
+}
