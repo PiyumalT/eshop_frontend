@@ -4,6 +4,7 @@ import { ShopContext } from '../Context/ShopContext'
 // import './CSS/Product.css'
 // import {Breadcrum} from '../Components/Breadcrum/Breadcrum'
 import ProductDisplay from '../Components/ProductDisplay/ProductDisplay';
+import RelatedProducts from '../Components/RelatedProducts/RelatedProducts';
 
 const Product = () => {
   const {all_products} = useContext(ShopContext);
@@ -14,7 +15,8 @@ const Product = () => {
       {/* <Breadcrum product={product}/> */}
       
       <ProductDisplay product={product}/>
+      <RelatedProducts/>
     </div>
   )
 }
-export default Product
+export default Product;

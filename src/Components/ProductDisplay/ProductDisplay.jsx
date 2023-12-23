@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './ProductDisplay.css'
+import { ShopContext } from '../../Context/ShopContext'
 
 const ProductDisplay = (props) => {
     const {product} = props;
+    const {addToCart} = useContext(ShopContext);
   return (
     <div className="productdisplay">
         <div className="productdisplay_left">
@@ -44,7 +46,7 @@ const ProductDisplay = (props) => {
                 <input type="number" min='1' max='10' placeholder='1'/>
             </div>
             <div className="productdisplay-right-btns">
-                <button className='add-to-cart'>Add to cart</button>
+                <button className='add-to-cart' onClick={()=>{addToCart(product.id)}}>Add to cart</button>
                 <button className='buy-now'>Buy now</button>
             </div>
 
