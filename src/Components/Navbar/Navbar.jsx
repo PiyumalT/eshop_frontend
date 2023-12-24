@@ -5,10 +5,13 @@ import logo from '../Assets/logo.png'
 import cart_icon from '../Assets/cart_icon.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faUser } from '@fortawesome/free-solid-svg-icons';
+import { useContext } from 'react';
+import { ShopContext } from '../../Context/ShopContext';
 
 
 export const Navbar = () => {
   const [showLinks, setShowLinks] = useState("category1")
+  const {getTotalCartQuantity} = useContext(ShopContext);
   return (
     <div className='navbar'>
       <div className='navbar__logo'>
@@ -25,20 +28,20 @@ export const Navbar = () => {
       </ul>
       <div className='navbar__search'>
         <input type='text' placeholder='Search' />
-        <button>
+        <button onClick={()=>{setShowLinks("null")}}>
           <FontAwesomeIcon icon={faSearch} />
         </button>
       </div>
       <div className='navbar__cart'>
-        <Link to='/cart'>
+        <Link to='/cart' onClick={()=>{setShowLinks("null")}}>
           <img src={cart_icon} alt='cart' />
           <div className='navbar_cart_count'>
-            0
+            {getTotalCartQuantity()}
           </div>
         </Link>
       </div>
       <div className='navbar__user'>
-        <Link to='/sign'>
+        <Link to='/sign' onClick={()=>{setShowLinks("null")}}>
           <button>
             <FontAwesomeIcon icon={faUser} />
           </button>

@@ -91,13 +91,14 @@
     margin: auto;
 }
 .cartitems-promocode{
-    flex: 1;
+    padding: 0px;
 }
 .cartitems-promocode p{
     color: gray;
 }
 .cartitem-promobox{
-    width: 500px;
+    padding: 0 ;
+    padding-left: 10px;
     margin-top: 15px;
     background: #f5f5f5;
     align-items: center;
