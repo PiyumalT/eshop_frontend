@@ -11,7 +11,7 @@ export const Hero = () => {
             <h2>Exprlore Unique Items </h2>
             <h2>Just for you</h2>
             <Link to='/'>
-                <button className='shop_now_btn'>Shop Now -&gt;</button>
+                <button className='shop_now_btn' onClick={window.scrollTo(1000,1000)}>Shop Now -&gt;</button>
             </Link>
         </div>
         <div className="hero_right">

@@ -35,7 +35,7 @@ export const Footer = () => {
       <div className="footer-credits-container">
         <div className="footer-credits">
           <hr />
-          <p>© 2021 Eshop. All Rights Reserved</p>
+          <p>© 2023 Eshop. All Rights Reserved <a href='https://github.com/PiyumalT/'>PiyumalT</a> </p>
         </div>
       </div>
     </div>

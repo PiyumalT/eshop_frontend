@@ -1,5 +1,4 @@
 .footer{
-    margin: 50px;
     margin-bottom: 0;
 }
 .footer a{
@@ -35,6 +34,12 @@
 }
 .footer-links li{
     cursor: pointer;
+    padding-left:1px;
+}
+.footer-links li:hover , .footer-privacy-links a:hover{
+    color: black;
+    font-weight: 600;
+    padding-left: 0px;
 }
 .footer-icon-container{
     display: flex;
@@ -63,10 +68,17 @@
     color: rgb(57, 57, 57);
     font-size: 18px;
 }
+.footer-credits p{
+    margin: 0;
+}
 .footer-credits hr{
     width: 100%;
     border: none;
     border-radius: 10px;
     height: 3px;
     border: 1px solid darkgray;
+}
+.footer-credits a{
+    color:rgb(1, 59, 78);
+    font-weight: 600;
 }

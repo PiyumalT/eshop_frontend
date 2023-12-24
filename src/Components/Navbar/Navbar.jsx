@@ -10,7 +10,7 @@ import { ShopContext } from '../../Context/ShopContext';
 
 
 export const Navbar = () => {
-  const [showLinks, setShowLinks] = useState("category1")
+  const [showLinks, setShowLinks] = useState("null")
   const {getTotalCartQuantity} = useContext(ShopContext);
   return (
     <div className='navbar'>
