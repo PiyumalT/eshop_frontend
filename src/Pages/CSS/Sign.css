@@ -4,8 +4,35 @@
     padding-top: 50px;
     padding-bottom: 50px;
 }
+/* Add this CSS to your existing stylesheet or create a new one */
+
+.sign .tabs {
+    margin-bottom: 20px;
+  }
+  
+  .sign .tabs span {
+    cursor: pointer;
+    padding:10px 20px;
+    border-radius: 5px 5px 0 0;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+  }
+  
+  .sign .tabs span:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .sign .tabs .active-tab {
+    background-color: white;
+    border-bottom: 1px solid white;
+    position: relative;
+    bottom: -1px;
+  }
+
 .sign .sign-container{
-    width: 580px;
+    width: auto;
+    min-width: 300px;
+    max-width: 500px;
     background: white;
     margin:auto;
     padding:40px;
@@ -42,8 +69,15 @@
 }
 .sign-agreement{
     display: flex;
-    width: 50%;
+    width: 300px;
     align-items: center;
     gap: 10px;
     margin: auto;
+}
+.sign .signup-text{
+    color: #1E90FF;
+    cursor: pointer;
+}
+.sign .signup-text:hover{
+    text-decoration: underline;
 }
