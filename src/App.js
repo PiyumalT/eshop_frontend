@@ -7,6 +7,9 @@ import Cart from './Pages/Cart';
 import Product from './Pages/Product';
 import Sign from './Pages/Sign';
 import ShopCategory from './Pages/ShopCategory';
+import axios from 'axios';
+
+axios.defaults.baseURL = 'http://localhost:3000/api/v1/';
 
 function App() {
   return (
@@ -18,9 +21,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/cart" element={<Cart />} />
-            <Route path="/product" element={<Product />}>
-              <Route path=":ProductId" element={<Product />} />
-            </Route>
+            <Route path="/product/:id" element={<Product />} />
             <Route path="/sign" element={<Sign />} />   
             <Route path="/mens" element={<ShopCategory category="men"/>} />
             <Route path='/womans' element={<ShopCategory category="women"/>} />

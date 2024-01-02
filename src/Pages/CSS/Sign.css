@@ -81,3 +81,10 @@
 .sign .signup-text:hover{
     text-decoration: underline;
 }
+.res-msg{
+    margin-top: 50px;
+    text-align: center;
+    color: red;
+    font-weight: bold;
+
+}

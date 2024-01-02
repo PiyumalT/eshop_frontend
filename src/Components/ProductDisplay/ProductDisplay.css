@@ -112,4 +112,11 @@
     cursor: not-allowed;
 }
 
+.productNotfound{
+    font-size: large;
+    font-weight: 700;
+    color: #8e8e8e;
+    margin: 50px 0px;
+}
+
 

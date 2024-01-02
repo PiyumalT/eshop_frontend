@@ -1,10 +1,38 @@
-import React, { useContext } from 'react'
+import React, { useContext ,useState , useEffect } from 'react'
 import './ProductDisplay.css'
 import { ShopContext } from '../../Context/ShopContext'
+import { useParams } from 'react-router-dom'
+import axios from 'axios'
 
-const ProductDisplay = (props) => {
-    const {product} = props;
+const ProductDisplay = () => {
+    const [product, setProduct] = useState(null);
     const {addToCart} = useContext(ShopContext);
+    const { id } = useParams(); // Get the id from the url
+    const [resMsg, setResMsg] = useState('Loading...');
+
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const response = await axios.get(`http://localhost:3000/api/v1/products/${id}`);
+            setProduct(response.data);
+            setResMsg(response);
+          } catch (error) {
+            setProduct(null);
+            setResMsg("No such product or expired link");
+          }
+        };
+    
+        fetchData();
+      }, [id]); // Include id in the dependency array to re-fetch data when id changes
+    
+      if (!product) {
+        // Loading state or handle the case where data is still being fetched
+        return <p className='productNotfound'>{resMsg}</p>;
+      }
+    
+    
+    
+        
   return (
     <div className="productdisplay">
         <div className="productdisplay_left">
@@ -31,11 +59,11 @@ const ProductDisplay = (props) => {
             </div> */}
             <div className="productdisplay-right-prices">
                 <div className="old-price">
-                    <p>{product.old_price} $</p>
+                    <p>{product.price*1.2} $</p>
 
                 </div>
                 <div className="new-price">
-                    <p>{product.new_price} $</p>
+                    <p>{product.price} $</p>
                 </div>
             </div>
             <div className="productdisplay-right-description">
@@ -43,7 +71,7 @@ const ProductDisplay = (props) => {
             </div>
             <div className="productdisplay-right-quantity">
                 <p>Quantity</p>
-                <input type="number" min='1' max='10' placeholder='1'/>
+                <input type="number" min='1' max={product.countInStock} placeholder='1'/>
             </div>
             <div className="productdisplay-right-btns">
                 <button className='add-to-cart' onClick={()=>{addToCart(product.id)}}>Add to cart</button>
