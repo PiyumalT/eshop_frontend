@@ -7,11 +7,37 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faUser } from '@fortawesome/free-solid-svg-icons';
 import { useContext } from 'react';
 import { ShopContext } from '../../Context/ShopContext';
+import axios from 'axios';
+import { useEffect } from 'react';
 
 
 export const Navbar = () => {
   const [showLinks, setShowLinks] = useState("null")
   const {getTotalCartQuantity} = useContext(ShopContext);
+  const [cartQuantity, setCartQuantity] = useState(0);
+
+  //get cart quantity from api
+  useEffect(() => {
+    const fetchCartQuantity = async () => {
+      try {
+        //set auth token in header
+        const token = localStorage.getItem('token');
+        if (token) {
+            axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        } else {
+            axios.defaults.headers.common['Authorization'] = null;
+        }
+        const response = await axios.get('/cart/count'); // Replace with your actual API endpoint
+        setCartQuantity(response.data.count); // Assuming the API response structure has a 'products' property
+    } catch (error) {
+        console.error('Error fetching cart data:', error);
+      }
+    };
+
+    fetchCartQuantity();
+  }
+  , []);
+
   return (
     <div className='navbar'>
       <div className='navbar__logo'>
@@ -22,9 +48,9 @@ export const Navbar = () => {
       </div>
       <ul className='navbar__links'>
         <li onClick={()=>{setShowLinks("category1")}}><Link to='/'>category 1</Link>{showLinks==="category1"?<hr/>:<></>}</li>
-        <li onClick={()=>{setShowLinks("category2")}}><Link to='/mens'>category 2</Link>{showLinks==="category2"?<hr/>:<></>}</li>
-        <li onClick={()=>{setShowLinks("category3")}}><Link to='/womans'>category 3</Link>{showLinks==="category3"?<hr/>:<></>}</li>
-        <li onClick={()=>{setShowLinks("category4")}}><Link to='/kids'>category 4</Link>{showLinks==="category4"?<hr/>:<></>}</li>
+        <li onClick={()=>{setShowLinks("category2")}}><Link to='/category/test1'>category 2</Link>{showLinks==="category2"?<hr/>:<></>}</li>
+        <li onClick={()=>{setShowLinks("category3")}}><Link to='/category/test 2'>category 3</Link>{showLinks==="category3"?<hr/>:<></>}</li>
+        <li onClick={()=>{setShowLinks("category4")}}><Link to='/category/test 4'>category 4</Link>{showLinks==="category4"?<hr/>:<></>}</li>
       </ul>
       <div className='navbar__search'>
         <input type='text' placeholder='Search' />
@@ -36,7 +62,7 @@ export const Navbar = () => {
         <Link to='/cart' onClick={()=>{setShowLinks("null")}}>
           <img src={cart_icon} alt='cart' />
           <div className='navbar_cart_count'>
-            {getTotalCartQuantity()}
+            {cartQuantity}
           </div>
         </Link>
       </div>

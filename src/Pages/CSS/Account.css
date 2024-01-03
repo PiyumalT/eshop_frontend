@@ -1,0 +1,58 @@
+.account {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid #ccc;
+    width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    box-shadow: black 0px 0px 5px 0px;
+}
+
+.account .user-info {
+    margin-bottom: 20px;
+}
+
+.account button {
+    width: 100px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    font-weight: 500;
+    font-size: large;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: rgb(2, 14, 83) 0px 0px 5px 0px;
+}
+
+.account button:hover {
+    background-color: #0056b3;
+}
+
+.account .user-info-set p{
+    width: 100px;
+    align-items: right;
+    font-size: large;
+
+}
+.account .user-info-set{
+    display: flex;
+    justify-content: space-around;
+    margin: 10px 3px;
+    align-items: center;
+}
+.account .user-info-set input{
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    font-size: large;
+}
+.account .user-info-set .long-text{
+    width: 200px;
+    height: 120px;
+}

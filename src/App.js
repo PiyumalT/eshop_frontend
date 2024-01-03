@@ -7,6 +7,7 @@ import Cart from './Pages/Cart';
 import Product from './Pages/Product';
 import Sign from './Pages/Sign';
 import ShopCategory from './Pages/ShopCategory';
+import Account from './Pages/Account';
 import axios from 'axios';
 
 axios.defaults.baseURL = 'http://localhost:3000/api/v1/';
@@ -23,9 +24,8 @@ function App() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/product/:id" element={<Product />} />
             <Route path="/sign" element={<Sign />} />   
-            <Route path="/mens" element={<ShopCategory category="men"/>} />
-            <Route path='/womans' element={<ShopCategory category="women"/>} />
-            <Route path='/kids' element={<ShopCategory category="kid"/>} />
+            <Route path="/category/:category" element={<ShopCategory/>} />
+            <Route path="/account" element={<Account />} />
 
  
           </Routes>

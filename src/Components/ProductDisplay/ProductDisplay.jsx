@@ -6,16 +6,30 @@ import axios from 'axios'
 
 const ProductDisplay = () => {
     const [product, setProduct] = useState(null);
-    const {addToCart} = useContext(ShopContext);
     const { id } = useParams(); // Get the id from the url
     const [resMsg, setResMsg] = useState('Loading...');
+    const [quantity, setQuantity] = useState(1);
+
+    const addToCart = (item_id) => {
+        console.log(item_id);
+        //set headers with token stored in local storage
+        const token = localStorage.getItem('token');
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        //send request to backend to add to cart (post : /cart)
+        axios.post('http://localhost:3000/api/v1/cart', {
+            item_id: item_id,
+            quantity: quantity
+        })
+    }
+
+
 
     useEffect(() => {
         const fetchData = async () => {
           try {
             const response = await axios.get(`http://localhost:3000/api/v1/products/${id}`);
             setProduct(response.data);
-            setResMsg(response);
+            setResMsg(null);
           } catch (error) {
             setProduct(null);
             setResMsg("No such product or expired link");
@@ -71,10 +85,10 @@ const ProductDisplay = () => {
             </div>
             <div className="productdisplay-right-quantity">
                 <p>Quantity</p>
-                <input type="number" min='1' max={product.countInStock} placeholder='1'/>
+                <input type="number" min='1' value={quantity} max={product.countInStock} placeholder='1' onChange={ev=>setQuantity(ev.target.value)}/>
             </div>
             <div className="productdisplay-right-btns">
-                <button className='add-to-cart' onClick={()=>{addToCart(product.id)}}>Add to cart</button>
+                <button className='add-to-cart' onClick={()=>{addToCart(product._id)}}>Add to cart</button>
                 <button className='buy-now'>Buy now</button>
             </div>
 

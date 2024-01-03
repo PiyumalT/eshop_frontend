@@ -23,7 +23,7 @@ const RelatedProducts = () => {
             <hr/>
             <div className="related-products-list">
                 {related_products.map((item,i)=>{
-                    return <Item key={i} id={item._id} name={item.name} image={item.image} price={item.new_price}/>
+                    return <Item key={i} id={item._id} name={item.name} image={item.image} price={item.price}/>
                 })}
             </div>
         </div>

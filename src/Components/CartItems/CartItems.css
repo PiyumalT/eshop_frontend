@@ -6,6 +6,11 @@
     background-color: #f5f5f5;
     border:0;
 }
+
+.cartitems-fomat a{
+    text-decoration: none;
+    color: inherit;
+}
 .cartitems-fomat-main{
     display:grid;
     grid-template-columns:0.5fr 3fr 1fr 1fr 1fr 1fr;
