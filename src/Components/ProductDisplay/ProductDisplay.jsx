@@ -1,14 +1,15 @@
 import React, { useContext ,useState , useEffect } from 'react'
 import './ProductDisplay.css'
-import { ShopContext } from '../../Context/ShopContext'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
+import { ShopContext } from '../../Context/ShopContext'
 
 const ProductDisplay = () => {
     const [product, setProduct] = useState(null);
     const { id } = useParams(); // Get the id from the url
     const [resMsg, setResMsg] = useState('Loading...');
     const [quantity, setQuantity] = useState(1);
+    const {cartQuantity, updateCartQuantity } = useContext(ShopContext);
 
     const addToCart = (item_id) => {
         console.log(item_id);
@@ -19,6 +20,9 @@ const ProductDisplay = () => {
         axios.post('http://localhost:3000/api/v1/cart', {
             item_id: item_id,
             quantity: quantity
+        })
+        .then((res) => {
+          updateCartQuantity();
         })
     }
 

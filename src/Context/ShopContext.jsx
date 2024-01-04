@@ -1,60 +1,54 @@
-import React, { createContext, useState } from 'react'
-import all_products from "../Components/Assets/all_product";
+import React, { createContext, useState, useEffect } from 'react';
+import axios from 'axios';
 
 export const ShopContext = createContext(null);
 
-const getDefaultCart = () => {
-    let cart ={};
-    for (let index = 0; index < all_products.length; index++) {
-        cart[index] = 0;
-    }
-    return cart;
-}
-
-
 const ShopContextProvider = (props) => {
-    const [cartItem, setCartItem] = useState(getDefaultCart());
+  const [cartQuantity, setCartQuantity] = useState(0);
 
-    const addToCart = (itemId) =>{
-        let tempCart = {...cartItem};
-        tempCart[itemId] = tempCart[itemId] + 1;
-        setCartItem(tempCart);
+  // Fetch initial cart quantity from the API
+  useEffect(() => {
+    const fetchCartQuantity = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        const response = await axios.get('/cart/count', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setCartQuantity(response.data.count);
+      } catch (error) {
+        console.error('Error fetching cart quantity:', error);
+      }
     };
 
-    const removeFromCart = (itemId) =>{
-        let tempCart = {...cartItem};
-        tempCart[itemId] = tempCart[itemId] - 1;
-        setCartItem(tempCart);
+    fetchCartQuantity();
+  }, []);
+
+  const updateCartQuantity = async () => {
+    try {
+        const token = localStorage.getItem('token');
+        const response = await axios.get('/cart/count', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+      setCartQuantity(response.data.count);
+    } catch (error) {
+      console.error('Error updating cart quantity:', error);
     }
+  };
 
-    const getTotalCartAmount = () => {
-        let total = 0;
-        for (const item in cartItem) {
-            if (cartItem[item] > 0) {
-                let iteminfo = all_products.find((product) => product.id === parseInt(item));
-                total += iteminfo.new_price * cartItem[item];
-            }
-        }
-        return total;
-    }
+  const contextValue = {
+    cartQuantity,
+    updateCartQuantity,
+  };
 
-    const getTotalCartQuantity = () => {
-        let totalItems = 0;
-        for (const item in cartItem) {
-            if (cartItem[item] > 0) {
-                totalItems += cartItem[item];
-            }
-        }
-        return totalItems;
-    }
+  return (
+    <ShopContext.Provider value={contextValue}>
+      {props.children}
+    </ShopContext.Provider>
+  );
+};
 
-    const contextValue = {all_products,cartItem, addToCart , removeFromCart,getTotalCartAmount,getTotalCartQuantity};
-
-    return (
-        <ShopContext.Provider value={contextValue}>
-            {props.children}
-        </ShopContext.Provider>
-    )
-}
-
-export default ShopContextProvider; 
+export default ShopContextProvider;

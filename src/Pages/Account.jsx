@@ -5,19 +5,35 @@ import './CSS/Account.css';
 const Account = () => {
     const [userData, setUserData] = useState(null);
 
-    // useEffect(() => {
-    //     // Fetch user data using axios
-    //     const fetchUserData = async () => {
-    //         try {
-    //             const response = await axios.get('/user/:id');
-    //             setUserData(response.data);
-    //         } catch (error) {
-    //             console.error('Error fetching user data:', error);
-    //         }
-    //     };
 
-    //     fetchUserData();
-    // }, []);
+    useEffect(() => {
+        const fetchData = async () => {
+            // Check if token exists in local storage
+            const token = localStorage.getItem('token');
+            if (!token) {
+                // If token doesn't exist, redirect user to sign in page
+                window.location.href = '/sign';
+            } else {
+                // If token exists, set token in axios header
+                axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+                // Fetch user data using axios
+                try {
+                    const response = await axios.get('/users/checktoken');
+                    setUserData(response.data);
+                } catch (error) {
+                    console.error('Error fetching user data:');
+                    alert('Your session has expired. Please sign in again.');
+                    //clear token in local storage
+                    localStorage.removeItem('token');
+                    //redirect user to sign in page
+                    window.location.href = '/sign';
+                }
+            }
+        };
+    
+        fetchData();
+    }, []);
+    
 
     const handleLogout = () => {
         // Clear token saved in local storage
@@ -26,10 +42,11 @@ const Account = () => {
         window.location.href = '/';
 
     };
+    
 
     return (
         <div className="account">
-            {!userData && (
+            {userData && (
                 <>
                     <div className="user-info">
                         <div className="user-info-set">
@@ -39,19 +56,19 @@ const Account = () => {
                         <div className="user-info">
                             <div className="user-info-set">
                                 <p>User ID :</p>
-                                <input type="text" disabled placeholder='User ID'/>
+                                <input type="text" disabled placeholder='User ID' value={userData.id}/>
                             </div>
                             <div className="user-info-set">
                                 <p>Name :</p>
-                                <input type="text" disabled placeholder='Name'/>
+                                <input type="text" disabled placeholder='Name' value={userData.name}/>
                             </div>
                             <div className="user-info-set">
                                 <p>Email :</p>
-                                <input type="text" disabled placeholder='email'/>
+                                <input type="text" disabled placeholder='email' value={userData.email}/>
                             </div>
                             <div className="user-info-set">
                                 <p>Phone :</p>
-                                <input type="text" disabled placeholder='phone number'/>
+                                <input type="text" disabled placeholder='phone number' value={userData.phone}/>
                             </div>
                             <div className="user-info-set">
                                 <p>Address :</p>

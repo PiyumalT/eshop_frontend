@@ -13,30 +13,30 @@ import { useEffect } from 'react';
 
 export const Navbar = () => {
   const [showLinks, setShowLinks] = useState("null")
-  const {getTotalCartQuantity} = useContext(ShopContext);
-  const [cartQuantity, setCartQuantity] = useState(0);
+  const {cartQuantity} = useContext(ShopContext);
+  // const [cartQuantity, setCartQuantity] = useState(0);
 
   //get cart quantity from api
-  useEffect(() => {
-    const fetchCartQuantity = async () => {
-      try {
-        //set auth token in header
-        const token = localStorage.getItem('token');
-        if (token) {
-            axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        } else {
-            axios.defaults.headers.common['Authorization'] = null;
-        }
-        const response = await axios.get('/cart/count'); // Replace with your actual API endpoint
-        setCartQuantity(response.data.count); // Assuming the API response structure has a 'products' property
-    } catch (error) {
-        console.error('Error fetching cart data:', error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchCartQuantity = async () => {
+  //     try {
+  //       //set auth token in header
+  //       const token = localStorage.getItem('token');
+  //       if (token) {
+  //           axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  //       } else {
+  //           axios.defaults.headers.common['Authorization'] = null;
+  //       }
+  //       const response = await axios.get('/cart/count'); // Replace with your actual API endpoint
+  //       setCartQuantity(response.data.count); // Assuming the API response structure has a 'products' property
+  //   } catch (error) {
+  //       console.error('Error fetching cart data:', error);
+  //     }
+  //   };
 
-    fetchCartQuantity();
-  }
-  , []);
+  //   fetchCartQuantity();
+  // }
+  // , []);
 
   return (
     <div className='navbar'>

@@ -16,7 +16,7 @@
 }
 
 .account button {
-    width: 100px;
+    width: 200px;
     padding: 10px 20px;
     background-color: #007bff;
     color: #fff;
@@ -45,7 +45,7 @@
     align-items: center;
 }
 .account .user-info-set input{
-    width: 200px;
+    width: 300px;
     height: 30px;
     border-radius: 5px;
     border: 1px solid #ccc;
@@ -53,6 +53,6 @@
     font-size: large;
 }
 .account .user-info-set .long-text{
-    width: 200px;
+    width: 300px;
     height: 120px;
 }

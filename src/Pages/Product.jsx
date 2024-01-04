@@ -7,14 +7,12 @@ import ProductDisplay from '../Components/ProductDisplay/ProductDisplay';
 import RelatedProducts from '../Components/RelatedProducts/RelatedProducts';
 
 const Product = () => {
-  const {all_products} = useContext(ShopContext);
   const {ProductId} =useParams();
-  const product = all_products.find(product => product.id ===Number(ProductId));
   return (
     <div>
       {/* <Breadcrum product={product}/> */}
       
-      <ProductDisplay product={product}/>
+      <ProductDisplay/>
       <RelatedProducts/>
     </div>
   )

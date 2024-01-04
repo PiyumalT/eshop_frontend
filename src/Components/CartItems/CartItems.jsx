@@ -1,11 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect , useContext} from 'react';
 import axios from 'axios';
 import './CartItems.css';
 import { Link } from 'react-router-dom';
+import { ShopContext } from '../../Context/ShopContext';
 
 export const CartItems = () => {
   const [cartData, setCartData] = useState([]);
   const [Subtotal, setSubtotal] = useState(0);
+  const {cartQuantity, updateCartQuantity } = useContext(ShopContext);
+  const [updateState, setUpdateState] = useState(0);
+
 
   if (!localStorage.getItem('token')) {
     window.location.href = '/sign';
@@ -39,7 +43,7 @@ export const CartItems = () => {
     };
 
     fetchCartData();
-  }, []);
+  }, [cartQuantity,updateState]);
 
     const removeCartItem = (id) => {
         //set headers with token stored in local storage
@@ -48,11 +52,21 @@ export const CartItems = () => {
         //send request to backend to add to cart (post : /cart)
         axios.delete(`/cart/${id}`)
         .then((res) => {
-            window.location.reload();
+          updateCartQuantity();
         })
+    }
 
-    
-
+    const updateCartItem = (id,quantity) => {
+        //set headers with token stored in local storage
+        const token = localStorage.getItem('token');
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        //send request to backend to add to cart (post : /cart)
+        axios.put(`/cart/${id}`,{
+            quantity: quantity
+        })
+        .then((res) => {
+          setUpdateState(updateState+1);
+        })
     }
 
   //add state variable to store total cart amount
@@ -87,9 +101,9 @@ export const CartItems = () => {
                 </div>
               <div className="cartitems-fomat-quantity">
                 {/* Assuming there is an 'addToCart' and 'removeFromCart' function */}
-                <button >+</button>
-                <input type="text" value={cartItem.quantity} disabled  min={0} max={cartItem.product_id.countInStock}/>
-                <button >-</button>
+                <button onClick={() => updateCartItem(cartItem._id,cartItem.quantity+1)}>+</button>
+                <input type="text" onChange={(e) => updateCartItem(cartItem._id,e.target.value)} value={cartItem.quantity} min={0} max={cartItem.product_id.countInStock}/>
+                <button onClick={() => updateCartItem(cartItem._id,cartItem.quantity-1)}>-</button>
               </div>
               <div className="cartitems-fomat-total">
                 <p>{cartItem.product_id.price * cartItem.quantity} $</p>
