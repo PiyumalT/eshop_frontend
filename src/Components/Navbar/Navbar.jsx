@@ -14,6 +14,7 @@ import { useEffect } from 'react';
 export const Navbar = () => {
   const [showLinks, setShowLinks] = useState("null")
   const {cartQuantity} = useContext(ShopContext);
+  const [searchTerm, setSearchTerm] = useState('');
   // const [cartQuantity, setCartQuantity] = useState(0);
 
   //get cart quantity from api
@@ -53,9 +54,15 @@ export const Navbar = () => {
         <li onClick={()=>{setShowLinks("category4")}}><Link to='/category/test 4'>category 4</Link>{showLinks==="category4"?<hr/>:<></>}</li>
       </ul>
       <div className='navbar__search'>
-        <input type='text' placeholder='Search' />
+        <input type='text' placeholder='Search' onChange={e=>{setSearchTerm(e.target.value)}}/>
         <button onClick={()=>{setShowLinks("null")}}>
+        {searchTerm.trim() === '' ? (
           <FontAwesomeIcon icon={faSearch} />
+        ) : (
+          <Link to={`/search/${searchTerm}`}>
+            <FontAwesomeIcon icon={faSearch} />
+          </Link>
+        )}
         </button>
       </div>
       <div className='navbar__cart'>

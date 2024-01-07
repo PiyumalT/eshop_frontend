@@ -7,8 +7,11 @@ import Cart from './Pages/Cart';
 import Product from './Pages/Product';
 import Sign from './Pages/Sign';
 import ShopCategory from './Pages/ShopCategory';
+import SearchResults from './Pages/SearchResults';
 import Account from './Pages/Account';
 import axios from 'axios';
+import AdminHome from './Pages/Admin/AdminHome';
+import AdminOrders from './Pages/Admin/AdminOrders';
 
 axios.defaults.baseURL = 'http://localhost:3000/api/v1/';
 
@@ -26,6 +29,10 @@ function App() {
             <Route path="/sign" element={<Sign />} />   
             <Route path="/category/:category" element={<ShopCategory/>} />
             <Route path="/account" element={<Account />} />
+            <Route path="/search/:searchTerm" element={<SearchResults/>} />
+
+            <Route path='/admin' element={<AdminHome/>} />
+            <Route path='/admin/orders/:status' element={<AdminOrders/>} />
 
  
           </Routes>

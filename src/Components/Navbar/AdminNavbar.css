@@ -1,0 +1,56 @@
+/* AdminNavbar.css */
+
+.admin-navbar {
+    display: flex;
+    background-color: #333;
+    padding: 10px;
+    justify-content: space-around;
+  }
+  .admin-navbar a{
+    color: white;
+    text-decoration: none;
+  }
+
+  .nav-link {
+    position: relative;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .nav-link span {
+    cursor: pointer;
+  }
+  
+  .dropdown {
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+    width: 150px;
+    text-align: left;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #555;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .admin-navbar svg{
+    margin-left: 5px;
+  }
+  
